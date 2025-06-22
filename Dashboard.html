@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dasbor Pengguna - NEURA TRADE</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0e0e0e;
+      color: white;
+    }
+    header {
+      background: linear-gradient(90deg, #3f51b5, #00bcd4);
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    .dashboard {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .card {
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .card h3 {
+      margin-top: 0;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .col {
+      flex: 1;
+      min-width: 250px;
+    }
+    .status {
+      color: limegreen;
+      font-weight: bold;
+    }
+    .chart {
+      height: 200px;
+      background: #292929;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+      font-size: 14px;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background: #00bcd4;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>NEURA TRADE - Dasbor Pengguna</h1>
+  </header>
+
+  <div class="dashboard">
+    <div class="row">
+      <div class="col card">
+        <h3>Saldo Akun</h3>
+        <p>💰 Rp 2.500.000</p>
+      </div>
+      <div class="col card">
+        <h3>Status Trading Otomatis</h3>
+        <p class="status">AKTIF ✅</p>
+        <button onclick="toggleTrading()">Nonaktifkan</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Portofolio</h3>
+      <ul>
+        <li>🔹 RNDR - 320 Coin</li>
+        <li>🔹 AGIX - 125 Coin</li>
+        <li>🔹 SOL - 50 Coin</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Grafik Performa</h3>
+      <div class="chart">[Grafik akan tampil di sini]</div>
+    </div>
+
+    <div class="card">
+      <h3>Pengaturan</h3>
+      <ul>
+        <li>🌐 Bahasa: <strong>Bahasa Indonesia</strong></li>
+        <li>🔒 Keamanan: <strong>Aktif</strong></li>
+        <li>💳 Wallet: <strong>Terhubung</strong></li>
+      </ul>
+      <button onclick="alert('Fitur pengaturan akan segera tersedia')">Ubah Pengaturan</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleTrading() {
+      const statusEl = document.querySelector('.status');
+      const button = document.querySelector('button');
+      if (statusEl.textContent.includes('AKTIF')) {
+        statusEl.textContent = 'TIDAK AKTIF ❌';
+        statusEl.style.color = 'red';
+        button.textContent = 'Aktifkan';
+      } else {
+        statusEl.textContent = 'AKTIF ✅';
+        statusEl.style.color = 'limegreen';
+        button.textContent = 'Nonaktifkan';
+      }
+    }
+  </script>
+</body>
+</html>
