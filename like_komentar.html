@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Like & Komentar - NEURA TRADE</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #111; color: #fff; padding: 20px; }
+    .card { background: #1c1c1c; padding: 20px; border-radius: 12px; margin-bottom: 20px; }
+    .like-btn { background: #0ff; border: none; padding: 10px 15px; border-radius: 6px; cursor: pointer; }
+    .comment-box { margin-top: 15px; }
+    .comment { background: #2c2c2c; padding: 10px; border-radius: 8px; margin-top: 8px; }
+    input[type="text"] { padding: 10px; width: 80%; border-radius: 5px; border: none; }
+    button.comment-btn { padding: 10px; margin-left: 10px; background: #0cf; color: #000; border: none; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <h1>Berbagi Pendapatmu - NEURA TRADE</h1>
+
+  <div class="card">
+    <h2>Apakah kamu suka fitur ini?</h2>
+    <button class="like-btn" onclick="addLike()">👍 Like (<span id="like-count">0</span>)</button>
+    
+    <div class="comment-box">
+      <h3>Komentar:</h3>
+      <input type="text" id="comment-input" placeholder="Tulis komentarmu...">
+      <button class="comment-btn" onclick="addComment()">Kirim</button>
+      <div id="comments"></div>
+    </div>
+  </div>
+
+  <script>
+    let likeCount = 0;
+
+    function addLike() {
+      likeCount++;
+      document.getElementById("like-count").innerText = likeCount;
+    }
+
+    function addComment() {
+      const input = document.getElementById("comment-input");
+      const commentsDiv = document.getElementById("comments");
+      if (input.value.trim() !== "") {
+        const newComment = document.createElement("div");
+        newComment.className = "comment";
+        newComment.innerText = input.value;
+        commentsDiv.appendChild(newComment);
+        input.value = "";
+      }
+    }
+  </script>
+</body>
+</html>
