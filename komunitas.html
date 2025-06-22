@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Komunitas NEURA TRADE</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .user-card {
+      background-color: #1f1f1f;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 10px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .follow-btn {
+      background-color: #00cfff;
+      color: black;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .follow-btn:hover {
+      background-color: #00b2d6;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>👥 Komunitas Investor - NEURA TRADE</h1>
+
+  <div class="user-card">
+    <div>
+      <strong>@trader_jenius</strong><br>
+      Fokus: BTC, ETH
+    </div>
+    <button class="follow-btn" onclick="toggleFollow(this)">Follow</button>
+  </div>
+
+  <div class="user-card">
+    <div>
+      <strong>@crypto_id</strong><br>
+      Fokus: DCA mingguan, edukasi
+    </div>
+    <button class="follow-btn" onclick="toggleFollow(this)">Follow</button>
+  </div>
+
+  <div class="user-card">
+    <div>
+      <strong>@neura_bot</strong><br>
+      Bot Analisa AI & sinyal
+    </div>
+    <button class="follow-btn" onclick="toggleFollow(this)">Follow</button>
+  </div>
+
+  <script>
+    function toggleFollow(button) {
+      if (button.textContent === "Follow") {
+        button.textContent = "Following";
+        button.style.backgroundColor = "#00e676";
+      } else {
+        button.textContent = "Follow";
+        button.style.backgroundColor = "#00cfff";
+      }
+    }
+  </script>
+
+</body>
+</html>
