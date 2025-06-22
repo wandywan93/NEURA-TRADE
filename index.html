@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEURA TRADE - Investasi Otomatis Berbasis AI</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0e0e0e;
+      color: white;
+    }
+    header {
+      padding: 40px 20px;
+      text-align: center;
+      background: linear-gradient(90deg, #3f51b5, #00bcd4);
+    }
+    header h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 18px;
+      font-style: italic;
+    }
+    section {
+      padding: 30px 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    .features {
+      background: #1e1e1e;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+    .features h2 {
+      margin-bottom: 10px;
+    }
+    .features ul {
+      padding-left: 20px;
+    }
+    .cta-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 25px;
+      background: #00bcd4;
+      color: black;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .demo-box {
+      margin-top: 30px;
+      padding: 20px;
+      background: #292929;
+      border-radius: 10px;
+    }
+    .log {
+      background: #111;
+      padding: 10px;
+      margin-top: 10px;
+      height: 150px;
+      overflow-y: auto;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    footer {
+      text-align: center;
+      font-size: 12px;
+      padding: 20px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>NEURA TRADE</h1>
+    <p>AI yang bekerja. Kamu tinggal nikmati hasilnya.</p>
+  </header>
+
+  <section>
+    <h2>Kenapa NEURA?</h2>
+    <p>Bayangkan jika kamu bisa berinvestasi dan trading otomatis hanya dari HP. NEURA adalah sahabat AI-mu yang akan bekerja 24 jam untuk menghasilkan keuntungan, tanpa kamu harus jadi ahli.</p>
+
+    <div class="features">
+      <h2>Fitur Utama:</h2>
+      <ul>
+        <li>📈 Trading otomatis 24 jam penuh</li>
+        <li>🪙 Mendukung semua jenis coin dan token</li>
+        <li>🔐 Keamanan tinggi dan anti-phishing</li>
+        <li>🌍 Terhubung ke bank lokal dan e-wallet</li>
+        <li>🤖 Didukung oleh AI yang terus belajar</li>
+      </ul>
+      <button class="cta-button" onclick="startTrading()">Mulai Demo Trading</button>
+    </div>
+
+    <div class="demo-box">
+      <h3>Simulasi AI Trading</h3>
+      <div class="log" id="logBox">
+        <p><em>Menunggu perintah...</em></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 NEURA AI LABS. Dibuat bersama sahabat AI-mu.
+  </footer>
+
+  <script>
+    const logBox = document.getElementById('logBox');
+    function log(msg) {
+      const p = document.createElement('p');
+      p.textContent = msg;
+      logBox.appendChild(p);
+      logBox.scrollTop = logBox.scrollHeight;
+    }
+
+    function startTrading() {
+      logBox.innerHTML = '';
+      log('🔄 Memulai proses trading otomatis...');
+      setTimeout(() => log('📊 AI menganalisis pasar...'), 1000);
+      setTimeout(() => log('🧠 AI memutuskan untuk membeli RNDR...'), 2500);
+      setTimeout(() => log('💰 Pembelian berhasil pada harga $8.25'), 4000);
+      setTimeout(() => log('📈 Harga naik 3%, AI menjual RNDR...'), 6000);
+      setTimeout(() => log('✅ Profit +3% disimpan ke saldo akun'), 7500);
+      setTimeout(() => log('🎉 Trading selesai. AI standby menunggu peluang baru.'), 9000);
+    }
+  </script>
+</body>
+</html>
