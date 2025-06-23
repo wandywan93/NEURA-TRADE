@@ -60,7 +60,7 @@
     <h2>Selamat Datang di NEURA TRADE</h2>
     <div class="info">
       <p>👤 Pengguna: <strong id="userInfo">...</strong></p>
-      <p>💰 Saldo: <strong id="saldo">Rp200.000</strong></p>
+      <p>💰 Saldo: <strong id="saldo">Rp<span id="saldoValue">200000</span></strong></p>
     </div>
     <button class="btn" onclick="mulaiTrading()">Mulai AI Trading</button>
     <div class="log" id="logBox">
@@ -72,12 +72,46 @@
   </div>
 
   <script>
-    // Tampilkan username dari localStorage
     const user = localStorage.getItem("username");
     document.getElementById("userInfo").textContent = user || "Tidak dikenal";
 
-    // Log box AI
+    let saldo = 200000;
+    const saldoValue = document.getElementById("saldoValue");
     const logBox = document.getElementById("logBox");
+
+    const chart = new Chart(document.getElementById("chartAset"), {
+      type: 'line',
+      data: {
+        labels: ['Awal'],
+        datasets: [{
+          label: 'Pertumbuhan Aset',
+          data: [saldo],
+          borderColor: '#00e0ff',
+          backgroundColor: '#00e0ff33',
+          fill: true,
+          tension: 0.4
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            ticks: {
+              callback: value => 'Rp' + value.toLocaleString('id-ID'),
+              color: '#fff'
+            }
+          },
+          x: {
+            ticks: { color: '#fff' }
+          }
+        },
+        plugins: {
+          legend: {
+            labels: { color: '#fff' }
+          }
+        }
+      }
+    });
+
     function log(msg) {
       const p = document.createElement("p");
       p.textContent = msg;
@@ -87,54 +121,23 @@
 
     function mulaiTrading() {
       logBox.innerHTML = '';
-      log("📊 AI mulai menganalisis data pasar...");
-      setTimeout(() => log("🧠 AI membeli token potensial..."), 1500);
-      setTimeout(() => log("📈 Token naik 5% - AI menjual..."), 3000);
+      log("📊 AI mulai menganalisis pasar...");
+      setTimeout(() => {
+        log("🧠 AI membeli token RNDR...");
+        tambahSaldo(15000); // simulasi keuntungan
+      }, 1500);
+      setTimeout(() => log("📈 Harga naik 7% - AI menjual..."), 3000);
       setTimeout(() => log("✅ Profit disimpan. Saldo bertambah."), 4500);
       setTimeout(() => log("🎯 AI selesai. Menunggu peluang baru..."), 6000);
     }
 
-    // Grafik Pertumbuhan Aset
-    const ctx = document.getElementById('chartAset').getContext('2d');
-    const chartAset = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ['Awal', 'Minggu 1', 'Minggu 2', 'Minggu 3', 'Sekarang'],
-        datasets: [{
-          label: 'Pertumbuhan Aset',
-          data: [200000, 225000, 245000, 270000, 300000],
-          borderColor: '#00e0ff',
-          backgroundColor: '#00e0ff33',
-          borderWidth: 2,
-          fill: true,
-          tension: 0.4
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            ticks: {
-              callback: function(value) {
-                return 'Rp' + value.toLocaleString('id-ID');
-              },
-              color: '#fff'
-            }
-          },
-          x: {
-            ticks: {
-              color: '#fff'
-            }
-          }
-        },
-        plugins: {
-          legend: {
-            labels: {
-              color: '#fff'
-            }
-          }
-        }
-      }
-    });
+    function tambahSaldo(jumlah) {
+      saldo += jumlah;
+      saldoValue.textContent = saldo;
+      chart.data.labels.push(`Trade ${chart.data.labels.length}`);
+      chart.data.datasets[0].data.push(saldo);
+      chart.update();
+    }
   </script>
 </body>
 </html>
