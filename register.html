@@ -55,7 +55,18 @@
 
   <script>
     function daftar() {
-      alert("Pendaftaran berhasil! Silakan login dengan akun yang sudah dibuat (simulasi).");
+      const user = document.getElementById("newuser").value;
+      const pass = document.getElementById("newpass").value;
+
+      if (!user || !pass) {
+        alert("Isi semua data!");
+        return;
+      }
+
+      localStorage.setItem("username", user);
+      localStorage.setItem("password", pass);
+
+      alert("✅ Pendaftaran berhasil!");
       window.location.href = "auth.html";
     }
   </script>
