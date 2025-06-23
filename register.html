@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daftar - NEURA TRADE</title>
+  <style>
+    body {
+      background-color: #0f0f0f;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .form-box {
+      background-color: #1a1a1a;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00e0ff88;
+      width: 90%;
+      max-width: 400px;
+    }
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #00e0ff;
+      color: black;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #00c8e0;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-box">
+    <h2>Daftar Akun Baru</h2>
+    <input type="text" placeholder="Nama pengguna" id="newuser">
+    <input type="password" placeholder="Kata sandi" id="newpass">
+    <button onclick="daftar()">Daftar</button>
+  </div>
+
+  <script>
+    function daftar() {
+      alert("Pendaftaran berhasil! Silakan login dengan akun yang sudah dibuat (simulasi).");
+      window.location.href = "auth.html";
+    }
+  </script>
+</body>
+</html>
