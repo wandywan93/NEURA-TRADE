@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEURA INVESTOR - AI Otomatis</title>
+  <style>
+    body {
+      background-color: #0e0e0e;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #00ffe0;
+    }
+    .dashboard {
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+    .log-box {
+      background: #111;
+      padding: 15px;
+      height: 200px;
+      overflow-y: auto;
+      border-radius: 8px;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    .start-btn {
+      background: #00cfff;
+      color: black;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🤖 NEURA INVESTOR</h1>
+  <div class="dashboard">
+    <p>AI sedang standby untuk membaca pasar dan mencari peluang terbaik...</p>
+    <button class="start-btn" onclick="startAI()">Aktifkan AI Investor</button>
+    <div class="log-box" id="logBox">
+      <p><em>Menunggu aktivasi...</em></p>
+    </div>
+  </div>
+
+  <script>
+    const logBox = document.getElementById("logBox");
+    function log(msg) {
+      const p = document.createElement("p");
+      p.textContent = msg;
+      logBox.appendChild(p);
+      logBox.scrollTop = logBox.scrollHeight;
+    }
+
+    function startAI() {
+      logBox.innerHTML = '';
+      log("🔄 AI terhubung ke pasar crypto...");
+      setTimeout(() => log("📊 Menganalisis pola harga..."), 1000);
+      setTimeout(() => log("🧠 Keputusan: Beli RNDR & SOL"), 2500);
+      setTimeout(() => log("💸 Eksekusi pembelian..."), 4000);
+      setTimeout(() => log("📈 RNDR naik 4%... AI menjual sebagian"), 5500);
+      setTimeout(() => log("✅ Profit +4% tercatat. Siap peluang berikutnya..."), 7000);
+    }
+  </script>
+
+</body>
+</html>
