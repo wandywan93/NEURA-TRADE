@@ -53,6 +53,12 @@
       background: #0f0f0f;
       border-radius: 10px;
     }
+    .notif-box {
+      margin-top: 30px;
+      background: #222;
+      padding: 15px;
+      border-radius: 8px;
+    }
   </style>
 </head>
 <body>
@@ -60,25 +66,35 @@
     <h2>Selamat Datang di NEURA TRADE</h2>
     <div class="info">
       <p>👤 Pengguna: <strong id="userInfo">...</strong></p>
-      <p>💰 Saldo: <strong id="saldo">Rp<span id="saldoValue">200000</span></strong></p>
+      <p>💰 Saldo: <strong>Rp<span id="saldoValue">200000</span></strong></p>
     </div>
+
     <button class="btn" onclick="mulaiTrading()">Mulai AI Trading</button>
+
     <div class="log" id="logBox">
       <p><em>AI standby menunggu perintah...</em></p>
     </div>
 
     <h3>📊 Grafik Pertumbuhan Aset</h3>
     <canvas id="chartAset" width="400" height="200"></canvas>
+
+    <h3>🔔 Notifikasi AI</h3>
+    <div class="notif-box" id="notifikasiBox">
+      <em>Belum ada notifikasi.</em>
+    </div>
   </div>
 
   <script>
+    // Inisialisasi user
     const user = localStorage.getItem("username");
     document.getElementById("userInfo").textContent = user || "Tidak dikenal";
 
+    // Data awal saldo
     let saldo = 200000;
     const saldoValue = document.getElementById("saldoValue");
     const logBox = document.getElementById("logBox");
 
+    // ChartJS setup
     const chart = new Chart(document.getElementById("chartAset"), {
       type: 'line',
       data: {
@@ -112,6 +128,7 @@
       }
     });
 
+    // Fungsi log ke layar
     function log(msg) {
       const p = document.createElement("p");
       p.textContent = msg;
@@ -119,24 +136,40 @@
       logBox.scrollTop = logBox.scrollHeight;
     }
 
-    function mulaiTrading() {
-      logBox.innerHTML = '';
-      log("📊 AI mulai menganalisis pasar...");
-      setTimeout(() => {
-        log("🧠 AI membeli token RNDR...");
-        tambahSaldo(15000); // simulasi keuntungan
-      }, 1500);
-      setTimeout(() => log("📈 Harga naik 7% - AI menjual..."), 3000);
-      setTimeout(() => log("✅ Profit disimpan. Saldo bertambah."), 4500);
-      setTimeout(() => log("🎯 AI selesai. Menunggu peluang baru..."), 6000);
-    }
-
+    // Fungsi update saldo
     function tambahSaldo(jumlah) {
       saldo += jumlah;
       saldoValue.textContent = saldo;
       chart.data.labels.push(`Trade ${chart.data.labels.length}`);
       chart.data.datasets[0].data.push(saldo);
       chart.update();
+    }
+
+    // Fungsi notifikasi AI
+    function tampilkanNotifikasi(teks) {
+      const box = document.getElementById("notifikasiBox");
+      box.innerHTML = `<p>${teks}</p>`;
+      alert("🔔 Notifikasi AI: " + teks);
+    }
+
+    // Fungsi simulasi trading AI
+    function mulaiTrading() {
+      logBox.innerHTML = '';
+      log("📊 AI mulai menganalisis pasar...");
+      setTimeout(() => {
+        log("🧠 AI membeli token RNDR...");
+        tambahSaldo(15000);
+        tampilkanNotifikasi("Token favorit RNDR naik 5%. AI menyarankan HOLD.");
+      }, 1500);
+      setTimeout(() => {
+        log("📈 Harga naik - AI menjual token...");
+      }, 3000);
+      setTimeout(() => {
+        log("✅ Profit disimpan. Saldo bertambah.");
+      }, 4500);
+      setTimeout(() => {
+        log("🎯 AI selesai. Menunggu peluang baru...");
+      }, 6000);
     }
   </script>
 </body>
