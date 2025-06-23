@@ -1,125 +1,71 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Masuk / Daftar - NEURA TRADE</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - NEURA TRADE</title>
   <style>
     body {
+      background-color: #0f0f0f;
+      color: #fff;
       font-family: Arial, sans-serif;
-      background-color: #0e0e0e;
-      color: white;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       margin: 0;
     }
-    .container {
-      background-color: #1e1e1e;
+    .login-box {
+      background-color: #1a1a1a;
       padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00e0ff88;
       width: 90%;
       max-width: 400px;
     }
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    input {
+    input[type="text"], input[type="password"] {
       width: 100%;
       padding: 12px;
-      margin: 8px 0;
+      margin: 10px 0;
       border: none;
       border-radius: 8px;
     }
     button {
       width: 100%;
       padding: 12px;
-      background: #00bcd4;
+      background-color: #00e0ff;
       color: black;
-      font-weight: bold;
       border: none;
       border-radius: 8px;
+      font-weight: bold;
       cursor: pointer;
-      margin-top: 10px;
     }
-    .toggle {
-      margin-top: 10px;
-      text-align: center;
-    }
-    .toggle a {
-      color: #00bcd4;
-      cursor: pointer;
-      text-decoration: none;
-    }
-    .message {
-      margin-top: 10px;
-      text-align: center;
-      font-size: 14px;
+    button:hover {
+      background-color: #00c8e0;
     }
   </style>
 </head>
 <body>
+  <div class="login-box">
+    <h2>Login ke NEURA TRADE</h2>
+    <input type="text" id="username" placeholder="Nama pengguna" />
+    <input type="password" id="password" placeholder="Kata sandi" />
+    <button onclick="login()">Masuk</button>
+  </div>
 
-<div class="container" id="form-container">
-  <h2>Masuk ke NEURA</h2>
-  <input type="email" id="email" placeholder="Email">
-  <input type="password" id="password" placeholder="Password">
-  <button onclick="login()">Masuk</button>
-  <div class="toggle">Belum punya akun? <a onclick="showRegister()">Daftar</a></div>
-  <div class="message" id="messageBox"></div>
-</div>
+  <script>
+    function login() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
 
-<script>
-  function login() {
-    const email = document.getElementById("email").value;
-    const pass = document.getElementById("password").value;
-    const msg = document.getElementById("messageBox");
-
-    if (email === "" || pass === "") {
-      msg.innerText = "❗ Email dan password wajib diisi.";
-    } else {
-      msg.innerText = "✅ Berhasil login. Mengarahkan ke dashboard...";
-      setTimeout(() => window.location.href = "Dashboard.html", 1500);
+      // Simulasi login sederhana
+      if (user === "neura" && pass === "1234") {
+        alert("Login berhasil!");
+        window.location.href = "Dashboard.html"; // arahkan ke dashboard
+      } else {
+        alert("Nama pengguna atau sandi salah!");
+      }
     }
-  }
-
-  function showRegister() {
-    document.getElementById("form-container").innerHTML = `
-      <h2>Daftar Akun Baru</h2>
-      <input type="text" id="nama" placeholder="Nama Lengkap">
-      <input type="email" id="email" placeholder="Email">
-      <input type="password" id="password" placeholder="Password">
-      <input type="password" id="confirm" placeholder="Ulangi Password">
-      <button onclick="register()">Daftar</button>
-      <div class="toggle">Sudah punya akun? <a onclick="showLogin()">Masuk</a></div>
-      <div class="message" id="messageBox"></div>
-    `;
-  }
-
-  function showLogin() {
-    location.reload();
-  }
-
-  function register() {
-    const nama = document.getElementById("nama").value;
-    const email = document.getElementById("email").value;
-    const pass = document.getElementById("password").value;
-    const confirm = document.getElementById("confirm").value;
-    const msg = document.getElementById("messageBox");
-
-    if (!nama || !email || !pass || !confirm) {
-      msg.innerText = "❗ Semua kolom wajib diisi.";
-    } else if (pass !== confirm) {
-      msg.innerText = "❗ Password tidak cocok.";
-    } else {
-      msg.innerText = "✅ Berhasil daftar. Mengarahkan ke Dashboard...";
-      setTimeout(() => window.location.href = "Dashboard.html", 1500);
-    }
-  }
-</script>
-
+  </script>
 </body>
 </html>
