@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dashboard - NEURA TRADE</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     body {
       background-color: #0f0f0f;
@@ -15,7 +16,7 @@
       background: #1a1a1a;
       border-radius: 10px;
       padding: 20px;
-      max-width: 600px;
+      max-width: 700px;
       margin: auto;
       box-shadow: 0 0 10px #00e0ff66;
     }
@@ -47,6 +48,11 @@
       border-radius: 6px;
       font-size: 14px;
     }
+    canvas {
+      margin-top: 30px;
+      background: #0f0f0f;
+      border-radius: 10px;
+    }
   </style>
 </head>
 <body>
@@ -60,13 +66,17 @@
     <div class="log" id="logBox">
       <p><em>AI standby menunggu perintah...</em></p>
     </div>
+
+    <h3>📊 Grafik Pertumbuhan Aset</h3>
+    <canvas id="chartAset" width="400" height="200"></canvas>
   </div>
 
   <script>
-    // Tampilkan nama user dari localStorage
+    // Tampilkan username dari localStorage
     const user = localStorage.getItem("username");
     document.getElementById("userInfo").textContent = user || "Tidak dikenal";
 
+    // Log box AI
     const logBox = document.getElementById("logBox");
     function log(msg) {
       const p = document.createElement("p");
@@ -83,6 +93,48 @@
       setTimeout(() => log("✅ Profit disimpan. Saldo bertambah."), 4500);
       setTimeout(() => log("🎯 AI selesai. Menunggu peluang baru..."), 6000);
     }
+
+    // Grafik Pertumbuhan Aset
+    const ctx = document.getElementById('chartAset').getContext('2d');
+    const chartAset = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Awal', 'Minggu 1', 'Minggu 2', 'Minggu 3', 'Sekarang'],
+        datasets: [{
+          label: 'Pertumbuhan Aset',
+          data: [200000, 225000, 245000, 270000, 300000],
+          borderColor: '#00e0ff',
+          backgroundColor: '#00e0ff33',
+          borderWidth: 2,
+          fill: true,
+          tension: 0.4
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            ticks: {
+              callback: function(value) {
+                return 'Rp' + value.toLocaleString('id-ID');
+              },
+              color: '#fff'
+            }
+          },
+          x: {
+            ticks: {
+              color: '#fff'
+            }
+          }
+        },
+        plugins: {
+          legend: {
+            labels: {
+              color: '#fff'
+            }
+          }
+        }
+      }
+    });
   </script>
 </body>
 </html>
